@@ -1,0 +1,8 @@
+{
+  "name": "v2free-daily-attendance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Jehadsama/v2free-daily-attendance.git",
+  "author": "Jehadsama <339364351@qq.com>",
+  "license": "MIT"
+}

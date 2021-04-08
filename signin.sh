@@ -1,0 +1,15 @@
+curl --location --request POST 'https://v2rss.tk/user/checkin' \
+--header 'Connection: keep-alive' \
+--header 'Content-Length: 0' \
+--header 'sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"' \
+--header 'Accept: application/json, text/javascript, */*; q=0.01' \
+--header 'X-Requested-With: XMLHttpRequest' \
+--header 'sec-ch-ua-mobile: ?0' \
+--header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36' \
+--header 'Origin: https://v2rss.tk' \
+--header 'Sec-Fetch-Site: same-origin' \
+--header 'Sec-Fetch-Mode: cors' \
+--header 'Sec-Fetch-Dest: empty' \
+--header 'Referer: https://v2rss.tk/user' \
+--header 'Accept-Language: zh-CN,zh;q=0.9' \
+--header 'Cookie: _ga=GA1.1.1223388536.1617506866; __stripe_mid=56b98c10-9666-4353-8db3-e3cca859fd257ac1a5; uid=6671; email=339364351%40qq.com; key=f5c603a829c0a394956fbbbef6a51dd56282b0882cdec; ip=47d3bbc9e630d353c36e3f81092f582e; expire_in=1649045921; _ga_NC10VPE6SR=GS1.1.1617686382.7.1.1617686457.0'
