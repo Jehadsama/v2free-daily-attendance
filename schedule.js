@@ -11,9 +11,13 @@ const ticktock = (rule, handler) => {
   schedule.scheduleJob(rule, async () => {
     const log = (msg, obj) => console.log(`${handler.name},${msg}`, obj);
     log('running');
-    await handler().catch((err) => {
-      log('err', { err });
-    });
+    await handler()
+      .then((result) => {
+        log('result', { result });
+      })
+      .catch((err) => {
+        log('err', { err });
+      });
     log('ending');
   });
 };
