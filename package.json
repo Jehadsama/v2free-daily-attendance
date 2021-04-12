@@ -6,6 +6,7 @@
   "author": "Jehadsama <339364351@qq.com>",
   "license": "MIT",
   "dependencies": {
+    "moment": "^2.29.1",
     "node-schedule": "^2.0.0"
   }
 }
