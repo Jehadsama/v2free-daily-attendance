@@ -1,4 +1,4 @@
-FROM node:14.13.1 as npminstall
+FROM node:14.16.1 as npminstall
 LABEL maintainer="Jehadsama<339364351@qq.com>"
 
 ARG nodejs_org_mirror=http://registry.npm.taobao.org/mirrors/node
@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm i --production --verbose
 
 # for `npm` just rm prefix `base-` from tag
-FROM mhart/alpine-node:slim-14.13.1
+FROM mhart/alpine-node:slim-14.16.1
 WORKDIR /src-app
 COPY . ./
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add curl
