@@ -7,8 +7,8 @@ const cron = {
   // sign in at 9am every day
   d1: '0 0 9 * * *',
 
-  // check health every 10 seconds
-  m1: '*/10 * * * * *',
+  // check health every minute
+  m1: '0 * * * *',
 };
 
 const ticktock = (rule, handler) => {
