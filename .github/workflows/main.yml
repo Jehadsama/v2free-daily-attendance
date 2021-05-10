@@ -1,0 +1,55 @@
+name: v2free-daily-attendance
+on: push
+
+jobs:
+  # test:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: "14.x"
+  #     - name: Install dependencies
+  #       run: npm i
+  #     - run: npm run lint
+  #     - run: npm run test
+  #     - run: npm run nyc:cov
+  #     - run: npm run cov
+
+  build:
+    runs-on: ubuntu-latest
+    # needs: test
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Login Docker
+        run: docker login -u ${{secrets.DOCKERUSER}} -p ${{secrets.DOCKERPASSWORD}}
+      - run: |
+          docker build -t ${{secrets.DOCKERUSER}}/v2free-daily-attendance .
+          docker push ${{secrets.DOCKERUSER}}/v2free-daily-attendance
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVICEHOST }}
+          username: ${{ secrets.SERVICEUSER }}
+          key: ${{secrets.SERVICESECRET}}
+          script: |
+            # 停止旧版容器
+            docker stop $(docker ps --filter ancestor=jehadsama/v2free-daily-attendance -q)
+            # 删除旧版容器
+            docker rm -f $(docker ps -a --filter ancestor=jehadsama/v2free-daily-attendance -q)
+            # 删除旧版镜像
+            docker rmi -f $(docker images jehadsama/v2free-daily-attendance -q)
+            # 登录阿里云镜像服务器
+            docker login --username=${{ secrets.DOCKERUSER }} --password ${{ secrets.DOCKERPASSWORD }}
+            # 拉取最新latest版本镜像
+            docker pull jehadsama/v2free-daily-attendance
+            # 运行最新latest版本镜像
+            docker run --name v2free_sch --network=my-net --restart=always -d jehadsama/v2free-daily-attendance
