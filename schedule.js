@@ -3,7 +3,7 @@ const schedule = require('node-schedule');
 
 const signIn = require('./signin');
 
-const healthcheck = () => 'v2free_daily_attendance,schedule,ok';
+const healthcheck = async () => 'v2free_daily_attendance,schedule,ok';
 
 const cron = {
   // sign in at 9am every day
