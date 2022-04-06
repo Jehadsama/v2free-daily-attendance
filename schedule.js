@@ -3,6 +3,8 @@ const schedule = require('node-schedule');
 
 const signIn = require('./signin');
 
+const healthcheck = () => 'v2free_daily_attendance,schedule,ok';
+
 const cron = {
   // sign in at 9am every day
   d1: '0 0 9 * * *',
@@ -31,11 +33,7 @@ const ticktock = (rule, handler) => {
 };
 
 const running = async () => {
-  [
-    async function healthcheck() {
-      return 'v2free_daily_attendance,schedule,ok';
-    },
-  ].forEach((fn) => ticktock(cron.m1, fn));
+  [healthcheck].forEach((fn) => ticktock(cron.m1, fn));
   [signIn].forEach((fn) => ticktock(cron.d1, fn));
 };
 
