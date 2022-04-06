@@ -35,7 +35,7 @@ jobs:
             # 删除旧版镜像
             docker rmi -f $(docker images jehadsama/v2free-daily-attendance -q)
             # 登录镜像服务器
-            echo ${{secrets.DOCKERPASSWORD}} | docker login -u =${{ secrets.DOCKERUSER }} --password-stdin
+            echo ${{secrets.DOCKERPASSWORD}} | docker login -u ${{ secrets.DOCKERUSER }} --password-stdin
             # 拉取最新latest版本镜像
             docker pull jehadsama/v2free-daily-attendance
             # 运行最新latest版本镜像
