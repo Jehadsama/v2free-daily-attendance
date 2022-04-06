@@ -10,7 +10,7 @@ const cron = {
   d1: '0 0 9 * * *',
 
   // check health every minute
-  m1: '0 * * * *',
+  m1: '0 * * * * *',
 };
 
 const ticktock = (rule, handler) => {
