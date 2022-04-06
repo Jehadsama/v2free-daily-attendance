@@ -33,7 +33,7 @@ const ticktock = (rule, handler) => {
 };
 
 const running = async () => {
-  [healthcheck].forEach((fn) => ticktock(cron.m1, fn));
+  [healthcheck].forEach((fn) => ticktock(cron.h1, fn));
   [signIn].forEach((fn) => ticktock(cron.d1, fn));
 };
 
