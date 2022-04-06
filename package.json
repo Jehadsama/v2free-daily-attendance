@@ -6,6 +6,8 @@
   "author": "Jehadsama <339364351@qq.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.26.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "node-schedule": "^2.0.0"
   }

@@ -1,7 +1,7 @@
 const moment = require('moment');
 const schedule = require('node-schedule');
 
-const { signIn } = require('./signin');
+const signIn = require('./signin');
 
 const cron = {
   // sign in at 9am every day

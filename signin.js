@@ -1,17 +1,21 @@
-const { exec } = require('child_process');
-const util = require('util');
-const execPromisify = util.promisify(exec);
+const _ = require('lodash');
+const axios = require('axios');
+
+// important environment variable!
+const COOKIE = process.env.CK;
 
 const signIn = async () => {
   try {
-    const { stdout, stderr } = await execPromisify('./signin.sh');
-
-    const result = JSON.parse(stdout);
-
-    return result.ret === 1 ? 'success' : 'failed';
+    const opt = {
+      method: 'post',
+      url: 'https://w1.v2free.net/user/checkin',
+      headers: { cookie: COOKIE },
+    };
+    const result = await axios(opt);
+    return _.get(result, 'data', 'msg');
   } catch (err) {
     console.log('err', err);
   }
 };
 
-module.exports = { signIn };
+module.exports = signIn;
