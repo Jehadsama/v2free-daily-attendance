@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker Login
-        run: docker login -u ${{secrets.DOCKERUSER}} -p ${{secrets.DOCKERPASSWORD}}
+        run: echo ${{secrets.DOCKERPASSWORD}} | docker login -u ${{secrets.DOCKERUSER}} --password-stdin
       - name: Build And Push Image
         run: |
           docker build -t ${{secrets.DOCKERUSER}}/v2free-daily-attendance .
@@ -35,7 +35,7 @@ jobs:
             # 删除旧版镜像
             docker rmi -f $(docker images jehadsama/v2free-daily-attendance -q)
             # 登录镜像服务器
-            docker login --username=${{ secrets.DOCKERUSER }} --password ${{ secrets.DOCKERPASSWORD }}
+            echo ${{secrets.DOCKERPASSWORD}} | docker login -u =${{ secrets.DOCKERUSER }} --password-stdin
             # 拉取最新latest版本镜像
             docker pull jehadsama/v2free-daily-attendance
             # 运行最新latest版本镜像
