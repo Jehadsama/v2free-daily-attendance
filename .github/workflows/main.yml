@@ -39,4 +39,4 @@ jobs:
             # 拉取最新latest版本镜像
             docker pull jehadsama/v2free-daily-attendance
             # 运行最新latest版本镜像
-            docker run --name v2free_sch --network=my-net --restart=always -d -e CK=${{ secrets.CK }} jehadsama/v2free-daily-attendance
+            docker run --name v2free_sch -e "CK=${{ secrets.CK }}" --network=my-net --restart=always -d jehadsama/v2free-daily-attendance
