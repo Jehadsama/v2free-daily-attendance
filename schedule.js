@@ -15,18 +15,20 @@ const cron = {
 
 const ticktock = (rule, handler) => {
   schedule.scheduleJob(rule, async () => {
-    const log = (msg, obj) =>
+    const log = (description, obj = '') =>
       console.log(
-        `${handler.name},${msg},${moment().format('YYYY-MM-DD HH:mm:ss')}`,
+        `${handler.name},${description},${moment().format(
+          'YYYY-MM-DD HH:mm:ss'
+        )}`,
         obj
       );
     log('running');
     await handler()
       .then((result) => {
-        log('result', { result });
+        log('result', result);
       })
       .catch((err) => {
-        log('err', { err });
+        log('err', err);
       });
     log('ending');
   });

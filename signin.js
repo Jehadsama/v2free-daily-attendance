@@ -12,9 +12,12 @@ const signIn = async () => {
       headers: { cookie: COOKIE },
     };
     const result = await axios(opt);
-    return _.get(result, 'data', 'msg');
+    return _.get(result, 'data.ret') === 1
+      ? 'sign in successfully'
+      : 'sign in failed';
   } catch (err) {
     console.log('err', err);
+    return 'sign in failed';
   }
 };
 
