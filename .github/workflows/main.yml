@@ -11,8 +11,6 @@ jobs:
       matrix:
         node-version: [14.16.1]
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js 14.16.1
       - uses: actions/setup-node@v3
         with:
           node-version: 14.16.1
