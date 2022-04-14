@@ -9,6 +9,7 @@ COPY src/*.ts ./src/
 RUN npm i --verbose && npm run compile
 
 FROM node:14.16.1 as npminstall
+WORKDIR /tmp/app2
 # 拷贝 package.json 到工作跟目录下
 COPY package.json ./
 # 安装依赖
@@ -19,7 +20,7 @@ FROM mhart/alpine-node:slim-14.16.1
 WORKDIR /src-app
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add curl
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
-COPY --from=npminstall /tmp/app/node_modules /src-app/node_modules
+COPY --from=npminstall /tmp/app2/node_modules /src-app/node_modules
 COPY --from=compile /tmp/app/src/*.js /src-app/
 
 ENTRYPOINT ["node", "schedule.js"]
