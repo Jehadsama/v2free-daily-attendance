@@ -6,8 +6,7 @@ ARG npm_config_registry=https://registry.npm.taobao.org
 ENV NODEJS_ORG_MIRROR=${nodejs_org_mirror} NPM_CONFIG_REGISTRY=${npm_config_registry}
 WORKDIR /tmp/app
 COPY package*.json ./
-RUN npm i --production --verbose
-RUN npm run compile
+RUN npm i && npm run compile
 
 # for `npm` just rm prefix `base-` from tag
 FROM mhart/alpine-node:slim-14.16.1
