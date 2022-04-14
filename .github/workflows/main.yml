@@ -17,8 +17,9 @@ jobs:
         with:
           node-version: 14.16.1
       - name: Install dependencies
-      - run: npm install
-      - run: npm run compile
+        run: npm install
+      - name: compile code
+        run: npm run compile
 
   build:
     runs-on: ubuntu-latest
