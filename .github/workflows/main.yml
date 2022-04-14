@@ -1,10 +1,10 @@
 name: v2free-daily-attendance
 on:
   push:
-    branches:
-      - master
     paths-ignore:
       - README.md
+    branches:
+      - master
 
 jobs:
   # compile:
