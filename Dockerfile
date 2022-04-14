@@ -1,4 +1,4 @@
-FROM node:16.14.2 as base
+FROM node:14.16.1 as base
 LABEL maintainer="Jehadsama<339364351@qq.com>"
 ENV NODE_ENV=production
 ARG nodejs_org_mirror=http://registry.npm.taobao.org/mirrors/node
@@ -16,7 +16,7 @@ COPY package.json ./
 RUN npm install --production --verbose
 
 # for `npm` just rm prefix `base-` from tag
-FROM mhart/alpine-node:slim-16.14.2
+FROM mhart/alpine-node:slim-14.16.1
 WORKDIR /src-app
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add curl
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
