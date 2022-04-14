@@ -6,9 +6,8 @@ ARG npm_config_registry=https://registry.npm.taobao.org
 ENV NODEJS_ORG_MIRROR=${nodejs_org_mirror} NPM_CONFIG_REGISTRY=${npm_config_registry}
 WORKDIR /tmp/app
 COPY package*.json ./
-COPY tsconfig.json ./
-COPY src ./
-COPY types ./
+COPY src/*.ts ./src/
+COPY types/*.d.ts ./src/
 RUN npm i && npm run compile
 
 # for `npm` just rm prefix `base-` from tag
