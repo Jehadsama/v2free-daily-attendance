@@ -7,7 +7,6 @@ ENV NODEJS_ORG_MIRROR=${nodejs_org_mirror} NPM_CONFIG_REGISTRY=${npm_config_regi
 WORKDIR /tmp/app
 COPY package*.json ./
 COPY src/*.ts ./src/
-COPY types/*.d.ts ./src/
 RUN npm i && npm run compile
 
 # for `npm` just rm prefix `base-` from tag
@@ -17,6 +16,6 @@ COPY . ./
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add curl
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 COPY --from=npminstall /tmp/app/node_modules /src-app/node_modules
-COPY --from=npminstall /tmp/app/dist /src-app/
+COPY --from=npminstall /tmp/app/src/*.js /src-app/
 
 ENTRYPOINT ["node", "schedule.js"]
