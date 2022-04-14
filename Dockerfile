@@ -11,6 +11,7 @@ RUN npm i && npm run compile
 
 FROM base as npminstall
 # 拷贝 package.json 到工作跟目录下
+ENV NODE_ENV=production
 COPY package.json ./
 # 安装依赖
 RUN npm install --production --verbose
