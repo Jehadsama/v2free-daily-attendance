@@ -7,7 +7,7 @@ ENV NODEJS_ORG_MIRROR=${nodejs_org_mirror} NPM_CONFIG_REGISTRY=${npm_config_regi
 WORKDIR /tmp/app
 COPY package*.json ./
 COPY src/*.ts ./src/
-RUN npm i && npm run compile
+RUN npm i --verbose && npm run compile
 
 FROM base as npminstall
 # 拷贝 package.json 到工作跟目录下
