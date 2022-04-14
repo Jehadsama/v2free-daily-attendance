@@ -5,10 +5,23 @@ on:
       - master
 
 jobs:
+  compile:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.16.1]
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.16.1
+      - name: Install dependencies
+        run: npm install
+      - name: compile code
+        run: npm run compile
+
   build:
     runs-on: ubuntu-latest
-    # needs: test
-
+    needs: tsc
     steps:
       - uses: actions/checkout@v2
       - name: Docker Login
@@ -17,6 +30,7 @@ jobs:
         run: |
           docker build -t ${{secrets.DOCKERUSER}}/v2free-daily-attendance .
           docker push ${{secrets.DOCKERUSER}}/v2free-daily-attendance
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
