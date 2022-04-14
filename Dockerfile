@@ -12,7 +12,7 @@ RUN npm i && npm run compile
 FROM base as npminstall
 # 拷贝 package.json 到工作跟目录下
 COPY package.json ./
-COPY src/*js ./
+COPY src/*.js ./
 # 安装依赖
 RUN npm install --production --verbose
 
