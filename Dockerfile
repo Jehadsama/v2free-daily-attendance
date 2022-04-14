@@ -12,7 +12,6 @@ RUN npm i && npm run compile
 # for `npm` just rm prefix `base-` from tag
 FROM mhart/alpine-node:slim-14.16.1
 WORKDIR /src-app
-COPY . ./
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add curl
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 COPY --from=npminstall /tmp/app/node_modules /src-app/node_modules
