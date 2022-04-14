@@ -1,7 +1,7 @@
 const moment = require('moment');
 const schedule = require('node-schedule');
 
-const signin = require('./signin');
+const signin = require('./signIn');
 
 const healthcheck = async () => 'v2free_daily_attendance,schedule,ok';
 
