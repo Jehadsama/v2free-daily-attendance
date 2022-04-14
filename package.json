@@ -5,10 +5,16 @@
   "repository": "git@github.com:Jehadsama/v2free-daily-attendance.git",
   "author": "Jehadsama <339364351@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "compile": "tsc"
+  },
   "dependencies": {
     "axios": "^0.26.1",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "node-schedule": "^2.0.0"
+    "moment": "^2.29.2",
+    "node-schedule": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23"
   }
 }

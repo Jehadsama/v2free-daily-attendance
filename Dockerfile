@@ -16,4 +16,4 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 COPY --from=npminstall /tmp/app/node_modules /src-app/node_modules
 
-ENTRYPOINT ["node", "schedule.js"]
+ENTRYPOINT ["node", "./dist/schedule.js"]

@@ -1,7 +1,7 @@
 const moment = require('moment');
 const schedule = require('node-schedule');
 
-const signIn = require('./signin');
+const signin = require('./signin');
 
 const healthcheck = async () => 'v2free_daily_attendance,schedule,ok';
 
@@ -36,7 +36,7 @@ const ticktock = (rule, handler) => {
 
 const running = async () => {
   [healthcheck].forEach((fn) => ticktock(cron.h1, fn));
-  [signIn].forEach((fn) => ticktock(cron.d1, fn));
+  [signin].forEach((fn) => ticktock(cron.d1, fn));
 };
 
 if (!module.parent) {
