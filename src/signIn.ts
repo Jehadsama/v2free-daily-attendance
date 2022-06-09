@@ -11,7 +11,7 @@ type Tsigninppt = {
 const _ = require('lodash');
 const axios = require('axios');
 
-// important environment variable!
+// It is an important environment variable!
 const COOKIE = process.env.CK;
 
 const opt: Tsigninppt = {
