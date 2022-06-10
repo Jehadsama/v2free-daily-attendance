@@ -1,6 +1,6 @@
 type Tsignin = () => Promise<String>;
 
-type Tsigninppt = {
+type Tsigninopt = {
   method: string;
   url: string;
   headers: {
@@ -10,18 +10,20 @@ type Tsigninppt = {
 
 const _ = require('lodash');
 const axios = require('axios');
+const { readFile } = require('node:fs/promises');
 
 // It is an important environment variable!
 const COOKIE = process.env.CK;
-
-const opt: Tsigninppt = {
+console.log(__dirname)
+const getOpt = async () => ({
   method: 'post',
   url: 'https://w1.v2free.net/user/checkin',
-  headers: { cookie: COOKIE! },
-};
+  headers: { cookie: COOKIE || (await readFile('.ck')) },
+});
 
 const signIn: Tsignin = async () => {
   try {
+    const opt: Tsigninopt = await getOpt();
     const result: any = await axios(opt);
     return _.get(result, 'data.ret') === 1
       ? 'sign in successfully'
