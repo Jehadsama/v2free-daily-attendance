@@ -6,7 +6,8 @@
   "author": "Jehadsama <339364351@qq.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "tsc src/signIn.ts src/schedule.ts"
+    "compile": "tsc src/signIn.ts src/schedule.ts",
+    "signin":"node -pe \"require('./src/signIn.js')().then(console.log)\""
   },
   "dependencies": {
     "axios": "^0.26.1",
