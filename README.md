@@ -10,3 +10,7 @@ ck 文件放在根目录，保存v2free的cookie信息
 
 1. npm run compile 编译ts
 2. npm run signin 执行签到方法
+
+## go version
+
+[https://github.com/Jehadsama/v2free-daily-attendance](https://github.com/Jehadsama/v2free-daily-attendance)
