@@ -13,4 +13,4 @@ ck 文件放在根目录，保存v2free的cookie信息
 
 ## go version
 
-[https://github.com/Jehadsama/v2free-daily-attendance-go](https://github.com/Jehadsama/v2free-daily-attendance-go)
+[https://github.com/Jehadsama/daily-attendance](https://github.com/Jehadsama/daily-attendance)
